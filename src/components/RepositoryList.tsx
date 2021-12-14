@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useTypeSelector } from "../hooks/useTypeSelector";
 import { useActions } from "../hooks/useActions";
 
 const RepositoryList: React.FC = () => {
   const [term, setTerm] = useState("");
-  const state = useSelector((state) => state);
-  console.log("state --> ", state);
+  const { data, error, loading } = useTypeSelector(
+    (state: any) => state.repositories
+  );
   const { searchRepositories } = useActions();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -23,6 +24,11 @@ const RepositoryList: React.FC = () => {
         />
         <button>Search</button>
       </form>
+      {error && error}
+      {loading && <p>loading...</p>}
+      {!error &&
+        !loading &&
+        data.map((item: string) => <div key={item}>{item}</div>)}
     </div>
   );
 };
