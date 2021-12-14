@@ -21,7 +21,7 @@ const reducers = (
       return { ...state, loading: true, error: null, data: [] };
 
     case IActionType.SEARCH_REPOSITORIES_SUCCESS:
-      return { ...state, loading: false, error: null, data: [] };
+      return { ...state, loading: false, error: null, data: actions.payload };
 
     case IActionType.SEARCH_REPOSITORIES_ERROR:
       return { ...state, loading: false, error: actions.payload, data: [] };
