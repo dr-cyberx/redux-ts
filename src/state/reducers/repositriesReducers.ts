@@ -6,8 +6,14 @@ interface RepositriesState {
   data: string[];
 }
 
+const initialState = {
+  loading: false,
+  error: null,
+  data: [],
+};
+
 const reducers = (
-  state: RepositriesState,
+  state: RepositriesState = initialState,
   actions: IActions
 ): RepositriesState => {
   switch (actions.type) {
