@@ -1,31 +1,9 @@
+import { IActions } from "../actions/index";
+import { IActionType } from "../action-types/index";
 interface RepositriesState {
   loading: boolean;
   error: string | null;
   data: string[];
-}
-
-interface search_repositories {
-  type: IActionType.SEARCH_REPOSITORIES;
-  payload: string[];
-}
-interface search_repositories_success {
-  type: IActionType.SEARCH_REPOSITORIES_SUCCESS;
-  payload: string[];
-}
-interface search_repositories_error {
-  type: IActionType.SEARCH_REPOSITORIES_ERROR;
-  payload: string;
-}
-
-type IActions =
-  | search_repositories
-  | search_repositories_success
-  | search_repositories_error;
-
-enum IActionType {
-  SEARCH_REPOSITORIES = "search_repositories",
-  SEARCH_REPOSITORIES_SUCCESS = "search_repositories_success",
-  SEARCH_REPOSITORIES_ERROR = "search_repositories_error",
 }
 
 const reducers = (
